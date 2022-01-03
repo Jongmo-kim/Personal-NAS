@@ -1,4 +1,4 @@
-package com.jongmokim.personalnas.personalnas;
+package com.jongmokim.personalnas;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
