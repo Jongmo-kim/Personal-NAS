@@ -1,16 +1,25 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <h1>Server Message</h1>
+    <span >{{ msg }}</span>
+    <button @click="getServerGreeting">Get Message from Server</button>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  data() {
+    return { 
+      msg: '',
+    }
+  },
+  methods: {
+    async getServerGreeting() {
+      const res = await fetch('http://localhost:9090/api/greeting');
+      console.log(res);
+    }
+  },
 }
 </script>
 
