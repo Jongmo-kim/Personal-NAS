@@ -2,6 +2,8 @@
 node_modules
 /dist
 
+npm-v6.14.4
+
 
 # local env files
 .env.local
