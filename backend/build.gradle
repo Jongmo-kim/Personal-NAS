@@ -1,9 +1,35 @@
 plugins {
 	id 'org.springframework.boot' version '2.7.0-SNAPSHOT'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id "com.github.node-gradle.node" version "3.1.1"
 	id 'java'
 	id 'war'
 }
+
+node {
+	version = '14.15.4'
+	npmVersion = '6.14.4'
+	workDir = file('../frontend')
+	npmWorkDir = file('../frontend')
+	nodeModulesDir = file('../frontend')
+}
+
+task deleteVueArtifact(type: Delete) {
+    delete "src/main/resources/static"
+}
+
+//npm install
+task frontNpmInstall(type: NpmTask) {
+    workingDir = file("${project.projectDir}/../frontend")
+    args = ['install']
+}
+
+//npm run build
+task npmBuild(type: NpmTask, dependsOn: ['deleteVueArtifact', 'frontNpmInstall']) {
+    workingDir = file("${project.projectDir}/../frontend")
+    args = ['run', 'build']
+}
+
 
 group = 'com.jongmokim.personalnas'
 version = '0.0.1-SNAPSHOT'
