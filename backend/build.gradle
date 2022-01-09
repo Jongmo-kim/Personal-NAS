@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.7.0-SNAPSHOT'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id "com.github.node-gradle.node" version "3.1.1"
+	id 'jacoco'
 	id 'java'
 	id 'war'
 }
@@ -30,7 +31,6 @@ task npmBuild(type: NpmTask, dependsOn: ['deleteVueArtifact', 'frontNpmInstall']
     args = ['run', 'build']
 }
 
-
 group = 'com.jongmokim.personalnas'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '8'
@@ -45,6 +45,57 @@ repositories {
 	mavenCentral()
 	maven { url 'https://repo.spring.io/milestone' }
 	maven { url 'https://repo.spring.io/snapshot' }
+}
+
+jacoco {
+    toolVersion = "0.8.7"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+	afterEvaluate {
+		
+		classDirectories.setFrom(files(classDirectories.files.collect {
+			fileTree(dir: it,
+					exclude: [
+						'**/ServletInitializer*',
+						'**/PersonalnasApplication*',
+					])
+		}))
+	}
+
+	finalizedBy 'jacocoTestCoverageVerification'
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+			element = 'CLASS'
+            enabled = true
+
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 1.00
+            }
+
+            limit {
+                counter = 'METHOD'
+                value = 'COVEREDRATIO'
+                minimum = 1.00
+            }
+
+			excludes = [
+				'**.ServletInitializer*',
+				'**.PersonalnasApplication*',
+			]
+        }
+    }
 }
 
 dependencies {
@@ -63,4 +114,5 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+	finalizedBy 'jacocoTestReport'
 }
