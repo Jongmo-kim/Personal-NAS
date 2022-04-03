@@ -13,6 +13,6 @@ spring:
   datasource:
     hikari:
       maximum-pool-size: 4
-    url: jdbc:postgresql://jongmo.hopto.org:19363621/test_db
+    url: jdbc:postgresql://localhost:19621/test_db
     username: test_user
     password: test123
