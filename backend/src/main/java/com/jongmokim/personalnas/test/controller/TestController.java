@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/test")
-public class testController {
-    
+public class TestController {
+
     @GetMapping("/greeting")
     public ResponseEntity<String> gretting() {
         return ResponseEntity.ok().body("greetings!");

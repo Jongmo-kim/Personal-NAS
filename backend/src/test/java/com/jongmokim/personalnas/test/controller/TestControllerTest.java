@@ -19,7 +19,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest(webEnvironment = WebEnvironment.MOCK)
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-public class testControllerTest {
+public class TestControllerTest {
 
     @Autowired
     MockMvc mockMvc;
