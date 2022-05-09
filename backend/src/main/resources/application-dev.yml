@@ -16,3 +16,6 @@ spring:
     url: jdbc:postgresql://host.docker.internal:19621/test_db
     username: test_user
     password: test123
+logging:
+  level:
+    root: debug
