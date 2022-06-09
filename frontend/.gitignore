@@ -1,7 +1,7 @@
 .DS_Store
 node_modules
 /dist
-
+npm-v8.3.0
 
 # local env files
 .env.local
