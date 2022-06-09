@@ -69,6 +69,7 @@ jacocoTestReport {
 					exclude: [
 						'**/ServletInitializer*',
 						'**/PersonalnasApplication*',
+						'**/Config*',
 					])
 		}))
 	}
@@ -97,6 +98,7 @@ jacocoTestCoverageVerification {
 			excludes = [
 				'**.ServletInitializer*',
 				'**.PersonalnasApplication*',
+				'**.*Config*',
 			]
         }
     }
