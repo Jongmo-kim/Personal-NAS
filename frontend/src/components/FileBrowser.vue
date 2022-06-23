@@ -1,19 +1,17 @@
 <!-- AboutComponent.vue -->
 <template>
   <div>
-    <h1>Server Message</h1>
-    <span>message </span>
-    <h3>{{ msg }}</h3>
-    <hr />
-    <button @click="getServerGreeting">Get Message from Server</button>
-    <h2></h2>
+    <h1>File Browser</h1>
+    <p-toast></p-toast>
+    <p-button></p-button>
+    <p-input></p-input>
   </div>
 </template>
 <script>
 import { getTest } from "@/apis/apiTest";
 
 export default {
-  name: "AboutComponent",
+  name: "FileBrowser",
   data() {
     return {
       msg: "",
