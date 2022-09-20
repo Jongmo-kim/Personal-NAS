@@ -36,7 +36,11 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {}
+    "rules": {
+      "vue/multi-word-component-names": ["error", {
+        "ignores": ["Card","Button","Toast","Divider"]
+      }]
+    }
   },
   "browserslist": [
     "> 1%",

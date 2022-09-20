@@ -2,9 +2,9 @@
 <template>
   <div>
     <h1>File Browser</h1>
-    <p-toast></p-toast>
-    <p-button></p-button>
-    <p-input></p-input>
+    <Toast></Toast>
+    <Button></Button>
+    <InputText></InputText>
   </div>
 </template>
 <script>

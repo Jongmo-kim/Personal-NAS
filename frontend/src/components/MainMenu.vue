@@ -1,4 +1,4 @@
-<template>
+f<template>
   <div>
     <router-link to="/">홈</router-link> 
     <router-link to="/file-browser">파일탐색</router-link> 
