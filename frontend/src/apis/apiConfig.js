@@ -1,5 +1,3 @@
-
-export const BASE_URL = 'http://localhost:9090';
 /**
  * Fetch를 통해 http 전송을 보냅니다
  * @param {string} url - 전송 주소
@@ -16,8 +14,20 @@ export const fetchJson = async (url, method, param ) => {
         },
         body: JSON.stringify(param)
     }
-    return fetch(url, opt);
+    const res = await (fetch(url, opt).catch(handleError));
+    if(!res.ok)
+        throw res;
+    return await res.json();
 }
+
+const handleError = function (err) {
+    console.warn(err);
+    return new Response(JSON.stringify({
+        code: 400,
+        message: 'Stupid network Error'
+    }));
+};
+
 
 /**
  * 
@@ -28,8 +38,6 @@ const getCsrfToken = async () => {
         const csrfToken = document.cookie.match(new RegExp(`XSRF-TOKEN=([^;]+)`))[1];
         return csrfToken;
     } catch(e) {
-        await fetchJson('/');
-        const csrfToken = document.cookie.match(new RegExp(`XSRF-TOKEN=([^;]+)`))[1];
-        return csrfToken;
+        return '';
     }
 }

@@ -10,13 +10,13 @@ public class MemberDTO {
     
     private UUID uuid;
 
-    @NotBlank
+    @NotBlank(message = "아이디는 공백일수 없습니다.")
     private String id;
 
-    @NotBlank
+    @NotBlank(message = "비밀번호는 공백일수 없습니다.")
     private String password;
 
-    @NotBlank
+    @NotBlank(message = "이름은 공백일수 없습니다.")
     private String name;
 
     public Member toMember() {

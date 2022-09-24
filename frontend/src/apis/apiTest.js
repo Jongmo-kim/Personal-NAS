@@ -1,8 +1,7 @@
 import { fetchJson } from "@/apis/apiConfig"
 
 const getTest = async () => {
-    const res = await fetchJson('/');
-    return await res.text();
+    return await fetchJson('/api/members');
 }
 
 export {

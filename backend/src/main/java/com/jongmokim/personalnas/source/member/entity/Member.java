@@ -20,7 +20,7 @@ public class Member {
     @Column(columnDefinition = "BINARY(16)")
     private UUID uuid;
 
-    @Column(columnDefinition = "VARCHAR(100)")
+    @Column(columnDefinition = "VARCHAR(100)", unique = true)
     private String id;
 
     @Column(columnDefinition = "VARCHAR(255)")

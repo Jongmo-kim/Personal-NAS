@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -42,7 +43,7 @@ public class MemberController {
     }
     
     @PostMapping("")
-    public ResponseEntity<Member> memberInsert(@Valid MemberDTO member) {
+    public ResponseEntity<Member> memberInsert(@RequestBody  @Valid MemberDTO member) {
         Member inputMember = member.toMember();
         memberRepository.saveAndFlush(inputMember);
         return ResponseEntity.ok().body(inputMember);
