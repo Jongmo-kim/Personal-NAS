@@ -4,10 +4,10 @@ module.exports = defineConfig({
   transpileDependencies: true,
   devServer: {
     proxy: {
-      '/test': {
+      '/api': {
         target: 'http://localhost:9090',
         changeOrigin: true,
-        pathRewrite: { '^/': '' },
+        pathRewrite: { '^/api': '' },
       },
     }
   },
